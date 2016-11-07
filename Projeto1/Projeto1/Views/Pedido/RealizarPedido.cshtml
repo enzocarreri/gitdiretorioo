@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "RealizarPedido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pedido</h2>
+
+<form class="form-inline" action="@Url.Action("FinalizarPedido", "Pedido")">
+    <div class="form-group">
+        
+        <input type="hidden" name="item" value="@ViewBag.empresa">
+        <input type="hidden" name="cliente" value="@ViewBag.cliente">
+        <div class="col-md-12">
+            
+            <div class="panel-heading" role="tab" id="headingOne">
+                @foreach (Projeto1.Models.ModProduto item in Model)
+                {
+                    <input type="hidden" name="item" value="@item.codigoProduto">
+                    
+
+                    <a id=@item.codigoProduto class="list-group-item collapsed">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label >Nome: </label>@item.nomeProduto <br />
+                            </div>
+
+
+                        </div>
+
+                    </a>
+
+
+
+                }
+            </div>
+            <br />
+        </div>
+
+        <button class="btn btn-default">Pedir</button>
+        </div>
+    </form>
